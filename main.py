@@ -16,3 +16,6 @@ engine.setProperty('volume', 1.0)
 # Set Voice (Female)
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
+
+if __name__ == '__main__':
+    print('All works')
