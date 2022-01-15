@@ -4,7 +4,7 @@ from decouple import config
 USERNAME = config('USER')
 BOTNAME = config('BOTNAME')
 
-
+# Microsoft Speech API 5.4 (sapi5)
 engine = pyttsx3.init('sapi5')
 
 # Set Rate
