@@ -4,7 +4,7 @@ from decouple import config
 USERNAME = config('USER')
 BOTNAME = config('BOTNAME')
 
-
+# Microsoft Speech API 5.4 (sapi5)
 engine = pyttsx3.init('sapi5')
 
 # Set Rate
@@ -13,9 +13,6 @@ engine.setProperty('rate', 190)
 # Set Volume
 engine.setProperty('volume', 1.0)
 
-# Set Voice (Female)
+# Set Voice (Male)
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
-
-if __name__ == '__main__':
-    print('All works')
+engine.setProperty('voice', voices[0].id)
