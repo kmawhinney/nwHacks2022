@@ -5,7 +5,7 @@ import datetime
 print('Loading your AI personal assistant - G One')
 
 # Microsoft Speech API 5.4 (sapi5)
-engine=pyttsx3.init('sapi5')
+engine=pyttsx3.init('')
 voices=engine.getProperty('voices')
 engine.setProperty('volume', 1.0)
 engine.setProperty('rate', 190)
