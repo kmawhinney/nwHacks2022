@@ -11,7 +11,7 @@ engine.setProperty('volume', 1.0)
 engine.setProperty('rate', 190)
 engine.setProperty('voice','voices[0].id')
 
-
+# Text-to-speech Function
 def speak(text):
     engine.say(text)
     engine.runAndWait()
