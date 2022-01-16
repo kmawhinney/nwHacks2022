@@ -22,15 +22,6 @@ yahoofinanceapikey = {
     'x-api-key': "DJf9eRcBoZ5yXM7FfFMM47n4ThCajZQQ7iB3MjEU"
 }
 
-def to_date(ts):
-    return datetime.datetime.fromtimestamp(ts)
-
-dates = list(map(to_date, dates_json))
-plt.plot(dates, valuations)
-ax = plt.gca()
-ax.axes.xaxis.set_visible(False)
-plt.show()
-
 def speak(text):
     engine.say(text)
     engine.runAndWait()
@@ -108,14 +99,18 @@ if __name__ == '__main__':
                 speak(str(response_json["quoteResponse"]["result"][0]['bid']))
                 continue
 
-            if 'market summary' in information_parameter:
-                continue
             if 'option chain information' in information_parameter:
                 continue
+
             if 'market cap' in information_parameter:
+                response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey,
+                                            params=querystring)
+                response_json = json.loads(response.text)
+                print(response_json["quoteResponse"]["result"][0]['marketCap'])
+                speak(str(response_json["quoteResponse"]["result"][0]['marketCap']))
                 continue
             if 'chart' in information_parameter:
-                speak('Choose one of the following graphs: 5 days, 1 month, 6 months, 1 year, YTD, 5 years')
+                speak('Choose one of the following charts: 5 days, 1 month, 6 months, 1 year, YTD, 5 years')
                 time_parameter = takeCommand().lower()
                 if 'days' in time_parameter:
                     querystring = {"range": "5d",
