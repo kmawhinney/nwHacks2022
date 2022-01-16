@@ -75,9 +75,17 @@ if __name__=='__main__':
         if 'company information' in statement:
             speak('Say Company Name')
             company_name = takeCommand().lower()
-            speak('Say information needed')
+            speak('Say information needed, options are Quotes, Summary, Option Chain information ') #work on summary
             information_parameter = takeCommand().lower()
-            continue
+            if 'market cap' in information_parameter:
+                continue
+            if 'market cap' in information_parameter:
+                continue
+            if 'market cap' in information_parameter:
+                continue
+            if 'market cap' in information_parameter:
+                continue
+
 
 
 
