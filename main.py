@@ -102,8 +102,6 @@ if __name__=='__main__':
 
                 response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
                 response_json = json.loads(response.text)
-                print(response_json)
-                print(type(response_json))
                 print(response_json["quoteResponse"]["result"][0]['bid'])
                 speak(str(response_json["quoteResponse"]["result"][0]['bid']))
 
