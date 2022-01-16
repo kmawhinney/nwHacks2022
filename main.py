@@ -14,10 +14,11 @@ voices=engine.getProperty('voices')
 engine.setProperty('voice','voices[0].id')
 engine.setProperty('volume', 1.0)
 engine.setProperty('rate', 190)
-yahoofinanceurl = "https://yfapi.net/v6/finance/quote"
+yahoofinanceurlquotes = "https://yfapi.net/v6/finance/quote"
 yahoofinanceapikey = {
     'x-api-key': "DJf9eRcBoZ5yXM7FfFMM47n4ThCajZQQ7iB3MjEU"
     }
+
 
 
 def speak(text):
@@ -80,10 +81,15 @@ if __name__=='__main__':
 
         if 'company information' in statement:
             speak('Say Company Name')
-            company_name = takeCommand().lower()
+            company_name = takeCommand().upper()
+            querystring = {"symbols":company_name}
             speak('Say information needed, options are Quotes, Market Summary, Option Chain information ') #work on summary
             information_parameter = takeCommand().lower()
             if 'quotes' in information_parameter:
+
+                response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
+                print(response.text)
+
                 continue
             if 'market summary' in information_parameter:
                 continue
