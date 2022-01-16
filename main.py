@@ -4,6 +4,10 @@ import datetime
 import wikipedia
 import requests
 import json
+from newsapi.newsapi_client import NewsApiClient
+newsapi_p = NewsApiClient(api_key='bd315eb3ac20474a8a27b842ac2fe371')
+
+
 
 
 
@@ -99,6 +103,27 @@ if __name__=='__main__':
                 continue
             if 'market cap' in information_parameter:
                 continue
+
+        if 'news' in statement:
+            speak('Searching news...')
+            statement = statement.replace("news", "")
+            top_headlines = newsapi_p.get_top_headlines(q=statement,
+                                                      category='business',
+                                                      language='en')
+            if top_headlines['totalResults'] >= 3:
+                for news_id in range(0, 3):
+                    news = top_headlines['articles'][news_id]
+                    print(news['title'])
+                    speak(news['title'])
+
+            else:
+                for news_id in range(0, top_headlines):
+                    news = top_headlines['articles'][news_id]
+                    print(news['title'])
+
+
+
+
 
 
 
