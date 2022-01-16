@@ -65,6 +65,7 @@ if __name__=='__main__':
     while True:
         speak("Tell me how can I help you now?")
         speak("For specific Company information say Company Information")
+        speak("For news say News followed by a desired topic")
         statement = takeCommand().lower()
         if statement == 0:
             continue
@@ -120,6 +121,7 @@ if __name__=='__main__':
                 for news_id in range(0, top_headlines):
                     news = top_headlines['articles'][news_id]
                     print(news['title'])
+                    speak(news['title'])
 
 
 
