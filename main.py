@@ -92,7 +92,8 @@ if __name__=='__main__':
             information_parameter = takeCommand().lower()
             if 'quotes' in information_parameter:
 
-                response_json = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
+                response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
+                response_json = response.json()
                 response_dict = json.loads(response_json)
                 print(response_dict.text)
                 speak(response_dict["quoteResponse"]["result"]["bid"])
