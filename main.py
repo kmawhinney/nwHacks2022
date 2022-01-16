@@ -61,7 +61,7 @@ if __name__=='__main__':
             print('your personal assistant G-one is shutting down,Good bye')
             break
             
-if 'wikipedia' in statement:
+        if 'wikipedia' in statement:
             speak('Searching Wikipedia...')
             statement =statement.replace("wikipedia", "")
             results = wikipedia.summary(statement, sentences=3)
