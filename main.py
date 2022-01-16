@@ -9,7 +9,7 @@ from newsapi.newsapi_client import NewsApiClient
 
 newsapi_p = NewsApiClient(api_key='bd315eb3ac20474a8a27b842ac2fe371')
 
-print('Loading your financial personal assistant - G One')
+print('Loading your financial personal assistant - Maverik)
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -89,7 +89,7 @@ if __name__ == '__main__':
             company_name = takeCommand().upper()
             querystring = {"symbols": company_name}
             speak(
-                'Say information needed, options are Quotes, Market Summary, Option Chain information ')  # work on summary
+                'Say information needed, options are Quotes, Market Cap, Option Chain information, Charts')
             information_parameter = takeCommand().lower()
             if 'quotes' in information_parameter:
                 response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey,
