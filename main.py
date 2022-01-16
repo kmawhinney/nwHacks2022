@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
 import datetime
-
+import wikipedia
 
 
 print('Loading your AI personal assistant - G One')
@@ -9,6 +9,8 @@ print('Loading your AI personal assistant - G One')
 engine=pyttsx3.init()
 voices=engine.getProperty('voices')
 engine.setProperty('voice','voices[0].id')
+engine.setProperty('volume', 1.0)
+engine.setProperty('rate', 190)
 
 
 def speak(text):
@@ -58,3 +60,11 @@ if __name__=='__main__':
             speak('your personal assistant G-one is shutting down,Good bye')
             print('your personal assistant G-one is shutting down,Good bye')
             break
+            
+if 'wikipedia' in statement:
+            speak('Searching Wikipedia...')
+            statement =statement.replace("wikipedia", "")
+            results = wikipedia.summary(statement, sentences=3)
+            speak("According to Wikipedia")
+            print(results)
+            speak(results)
