@@ -17,10 +17,10 @@ engine.setProperty('voice', 'voices[0].id')
 engine.setProperty('volume', 1.0)
 engine.setProperty('rate', 190)
 yahoofinanceurlquotes = "https://yfapi.net/v6/finance/quote"
-yahoofinanceurlchart = "https://yfapi.net/v8/finance/chart/AAPL"
 yahoofinanceapikey = {
     'x-api-key': "DJf9eRcBoZ5yXM7FfFMM47n4ThCajZQQ7iB3MjEU"
 }
+yahoofinanceurloptionchain = "https://yfapi.net/v6/finance/options"
 
 def speak(text):
     engine.say(text)
@@ -100,7 +100,14 @@ if __name__ == '__main__':
                 continue
 
             if 'option chain information' in information_parameter:
+                response = requests.request("GET", yahoofinanceurloptionchain, headers=yahoofinanceapikey,
+                                            params=querystring)
+                response_json = json.loads(response.text)
+                print(response_json["quoteResponse"]["result"][0]['bid'])
+                speak(str(response_json["quoteResponse"]["result"][0]['bid']))
+
                 continue
+
 
             if 'market cap' in information_parameter:
                 response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey,
@@ -132,6 +139,7 @@ if __name__ == '__main__':
                     querystring = {"range": "ytd",
                                    "interval": "5d"}
 
+                yahoofinanceurlchart = "https://yfapi.net/v8/finance/chart/" + company_name
                 response = requests.request("GET", yahoofinanceurlchart, headers=yahoofinanceapikey,
                                             params=querystring)
                 response_json = json.loads(response.text)
