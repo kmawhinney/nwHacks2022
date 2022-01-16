@@ -53,6 +53,7 @@ if __name__=='__main__':
 
     while True:
         speak("Tell me how can I help you now?")
+        speak("For specific Company information say Company Information")
         statement = takeCommand().lower()
         if statement == 0:
             continue
@@ -69,3 +70,14 @@ if __name__=='__main__':
             speak("According to Wikipedia")
             print(results)
             speak(results)
+            continue
+
+        if 'company information' in statement:
+            speak('Say Company Name')
+            company_name = takeCommand().lower()
+            speak('Say information needed')
+            information_parameter = takeCommand().lower()
+            continue
+
+
+
