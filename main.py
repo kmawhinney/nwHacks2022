@@ -3,6 +3,7 @@ import pyttsx3
 import datetime
 import wikipedia
 import requests
+import json
 from newsapi.newsapi_client import NewsApiClient
 newsapi_p = NewsApiClient(api_key='bd315eb3ac20474a8a27b842ac2fe371')
 
@@ -91,9 +92,10 @@ if __name__=='__main__':
             information_parameter = takeCommand().lower()
             if 'quotes' in information_parameter:
 
-                response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
-                print(response.text)
-                speak(response["quoteResponse"]["result"]["bid"])
+                response_json = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
+                response_dict = json.loads(response_json)
+                print(response_dict.text)
+                speak(response_dict["quoteResponse"]["result"]["bid"])
 
                 continue
             if 'market summary' in information_parameter:
