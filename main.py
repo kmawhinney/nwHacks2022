@@ -2,6 +2,8 @@ import speech_recognition as sr
 import pyttsx3
 import datetime
 import wikipedia
+import requests
+
 
 
 
@@ -12,6 +14,10 @@ voices=engine.getProperty('voices')
 engine.setProperty('voice','voices[0].id')
 engine.setProperty('volume', 1.0)
 engine.setProperty('rate', 190)
+yahoofinanceurl = "https://yfapi.net/v6/finance/quote"
+yahoofinanceapikey = {
+    'x-api-key': "DJf9eRcBoZ5yXM7FfFMM47n4ThCajZQQ7iB3MjEU"
+    }
 
 
 def speak(text):
