@@ -108,11 +108,15 @@ if __name__=='__main__':
             top_headlines = newsapi_p.get_top_headlines(q=statement,
                                                       category='business',
                                                       language='en')
-            print(top_headlines)
-            if top_headlines['totalResults'] > 4:
+            if top_headlines['totalResults'] >= 3:
                 for news_id in range(0, 3):
-                    news = top_headlines['totalResults'][news_id]
+                    news = top_headlines['articles'][news_id]
                     print(news['title'])
+            else:
+                for news_id in range(0, top_headlines):
+                    news = top_headlines['articles'][news_id]
+                    print(news['title'])
+
 
 
 
