@@ -89,6 +89,7 @@ if __name__=='__main__':
 
                 response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
                 print(response.text)
+                speak(response["quoteResponse"]["result"]["bid"])
 
                 continue
             if 'market summary' in information_parameter:
