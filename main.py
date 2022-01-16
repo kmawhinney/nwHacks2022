@@ -11,6 +11,7 @@ newsapi_p = NewsApiClient(api_key='bd315eb3ac20474a8a27b842ac2fe371')
 
 
 
+
 print('Loading your financial personal assistant - G One')
 
 engine=pyttsx3.init()
@@ -23,6 +24,13 @@ yahoofinanceapikey = {
     'x-api-key': "DJf9eRcBoZ5yXM7FfFMM47n4ThCajZQQ7iB3MjEU"
     }
 
+querystring = {"symbols": 'AAPL'}
+response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
+response_json = json.loads(response.text)
+print(response_json)
+print(type(response_json))
+print(type(response_json["quoteResponse"]['result'][0]['language']))
+print(response_json["quoteResponse"]['result'][0]['bid'])
 
 
 def speak(text):
@@ -93,10 +101,11 @@ if __name__=='__main__':
             if 'quotes' in information_parameter:
 
                 response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
-                response_json = response.json()
-                response_dict = json.loads(response_json)
-                print(response_dict.text)
-                speak(response_dict["quoteResponse"]["result"]["bid"])
+                response_json = json.loads(response.text)
+                print(response_json)
+                print(type(response_json))
+                print(response_json["quoteResponse"]["result"][0]['bid'])
+                speak(str(response_json["quoteResponse"]["result"][0]['bid']))
 
                 continue
             if 'market summary' in information_parameter:
