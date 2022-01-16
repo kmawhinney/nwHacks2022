@@ -2,16 +2,15 @@ import speech_recognition as sr
 import pyttsx3
 import datetime
 
+
+
 print('Loading your AI personal assistant - G One')
 
-# Microsoft Speech API 5.4 (sapi5)
-engine=pyttsx3.init('')
+engine=pyttsx3.init()
 voices=engine.getProperty('voices')
-engine.setProperty('volume', 1.0)
-engine.setProperty('rate', 190)
 engine.setProperty('voice','voices[0].id')
 
-# Text-to-speech Function
+
 def speak(text):
     engine.say(text)
     engine.runAndWait()
@@ -48,3 +47,14 @@ wishMe()
 
 if __name__=='__main__':
     print("All done")
+
+    while True:
+        speak("Tell me how can I help you now?")
+        statement = takeCommand().lower()
+        if statement == 0:
+            continue
+
+        if "good bye" in statement or "ok bye" in statement or "stop" in statement:
+            speak('your personal assistant G-one is shutting down,Good bye')
+            print('your personal assistant G-one is shutting down,Good bye')
+            break
