@@ -112,6 +112,8 @@ if __name__=='__main__':
                 for news_id in range(0, 3):
                     news = top_headlines['articles'][news_id]
                     print(news['title'])
+                    speak(news['title'])
+
             else:
                 for news_id in range(0, top_headlines):
                     news = top_headlines['articles'][news_id]
