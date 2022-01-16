@@ -24,14 +24,6 @@ yahoofinanceapikey = {
     'x-api-key': "DJf9eRcBoZ5yXM7FfFMM47n4ThCajZQQ7iB3MjEU"
     }
 
-querystring = {"symbols": 'AAPL'}
-response = requests.request("GET", yahoofinanceurlquotes, headers=yahoofinanceapikey, params=querystring)
-response_json = json.loads(response.text)
-print(response_json)
-print(type(response_json))
-print(type(response_json["quoteResponse"]['result'][0]['language']))
-print(response_json["quoteResponse"]['result'][0]['bid'])
-
 
 def speak(text):
     engine.say(text)
@@ -104,8 +96,8 @@ if __name__=='__main__':
                 response_json = json.loads(response.text)
                 print(response_json["quoteResponse"]["result"][0]['bid'])
                 speak(str(response_json["quoteResponse"]["result"][0]['bid']))
-
                 continue
+
             if 'market summary' in information_parameter:
                 continue
             if 'option chain information' in information_parameter:
