@@ -5,7 +5,7 @@ import wikipedia
 
 
 
-print('Loading your AI personal assistant - G One')
+print('Loading your financial personal assistant - G One')
 
 engine=pyttsx3.init()
 voices=engine.getProperty('voices')
@@ -45,7 +45,7 @@ def takeCommand():
             return "None"
         return statement
 
-speak("Loading your AI personal assistant G-One")
+speak("Loading your financial personal assistant G-One")
 wishMe()
 
 if __name__=='__main__':
@@ -75,13 +75,13 @@ if __name__=='__main__':
         if 'company information' in statement:
             speak('Say Company Name')
             company_name = takeCommand().lower()
-            speak('Say information needed, options are Quotes, Summary, Option Chain information ') #work on summary
+            speak('Say information needed, options are Quotes, Market Summary, Option Chain information ') #work on summary
             information_parameter = takeCommand().lower()
-            if 'market cap' in information_parameter:
+            if 'quotes' in information_parameter:
                 continue
-            if 'market cap' in information_parameter:
+            if 'market summary' in information_parameter:
                 continue
-            if 'market cap' in information_parameter:
+            if 'option chain information' in information_parameter:
                 continue
             if 'market cap' in information_parameter:
                 continue
