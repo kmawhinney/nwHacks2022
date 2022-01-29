@@ -1,5 +1,5 @@
 # Stock/Finance text-to-voice project - nwHacks2022
-desc of project & technologies
+Project for a voice assistant, made during nwHacks2022.
 
 
 # User Stories
